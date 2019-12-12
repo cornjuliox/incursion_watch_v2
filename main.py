@@ -43,21 +43,17 @@ def _hydrate_incursion(incursion: dict) -> dict:
     def _get_region(region_id: int) -> str:
         full_url = f'{REGIONS}/{region_id}'
 
-        print('region -> {}'.format(full_url))
         resp = requests.get(full_url).json()
 
         name = resp.get('name')
-        print(f'region -> {name}')
 
         return name
 
     def _get_constellation(constellation_id: int) -> dict:
         # TODO: Get the region using the region ID
         full_url = f'{CONSTELLATIONS}/{constellation_id}'
-        print('constellation -> {}'.format(full_url))
         resp = requests.get(full_url).json()
 
-        print('constellation -> {}'.format(resp))
         new = {}
         new['name'] = resp.get('name')
         new['region_id'] = _get_region(resp.get('region_id'))
@@ -66,10 +62,7 @@ def _hydrate_incursion(incursion: dict) -> dict:
 
     def _get_solar_system(system_id: int) -> dict:
         full_url = f'{SYSTEMS}/{system_id}'
-        print('solar system -> {}'.format(full_url))
         resp = requests.get(full_url)
-
-        print('solar system -> {}'.format(resp.json()))
 
         new = {}
         new['name'] = resp.json().get('name')
@@ -83,21 +76,16 @@ def _hydrate_incursion(incursion: dict) -> dict:
 
     def _get_infested_solar_systems(solar_systems: list) -> list:
         hydrated_list = []
-        print('infested solar systems -> {}'.format(solar_systems))
         for x in solar_systems:
             hydrated_list.append(_get_solar_system(x))
-
-        print('infested solar systems -> {}'.format(hydrated_list))
 
         return hydrated_list
 
     def _get_faction(faction_id: int) -> dict:
         full_url = f'{FACTIONS}'
-        print(f'faction -> {full_url}')
         resp = requests.get(full_url).json()
 
         faction = [x for x in resp if x['faction_id'] == faction_id][0]
-        print('faction -> {}'.format(faction))
         return faction.get('name')
 
     def _get_current_time():
@@ -130,25 +118,65 @@ def _hydrate_incursion(incursion: dict) -> dict:
     return incursion
 
 
-def get_incursions():
+def get_incursions(from_file=None):
+
+    # standard incursion storage format v1:
+    # {
+    #   "hs": [{...}, {...}],
+    #   "ls": [{...}, {...}],
+    #   "ns": [{...}, {...}],
+    # }
     print('Getting the latest incursion data...')
 
-    data = requests.get(INCURSIONS).json()
+    if from_file:
+        print('loading from file...')
+        with open(opts.file, 'rb') as F:
+            incs = bson.loads(F.read())
 
-    print(json.dumps(data, indent=2))
-    return [
-        _hydrate_incursion(x)
-        for x in data
-    ]
+        pp.pprint(incs)
+
+        return incs
+    else:
+        print('loading incursions from endpoint...')
+
+        data = requests.get(INCURSIONS).json()
+
+        pp.pprint(data)
+
+        incursions = [
+            _hydrate_incursion(x)
+            for x in data
+        ]
+
+        output = {
+            'hs': [
+                x for x in incursions
+                if x['staging_solar_system_id']['security_status'] >= 0.5
+            ],
+            'ls': [
+                x for x in incursions
+                if x['staging_solar_system_id']['security_status'] > 0
+                and x['staging_solar_system_id']['security_status'] < 0.5
+            ],
+            'ns': [
+                x for x in incursions
+                if x['staging_solar_system_id']['security_status'] <= 0
+            ]
+        }
+
+        return output
 
 
 if __name__ == '__main__':
+    # Jinja2 Setup
     env = Environment(
         loader=FileSystemLoader('./templates'),
         # autoescape=select_autoescape(['html', 'xml'])
     )
     template = env.get_template('_template.html')
+    # /Jinja2 Setup
 
+    # Argparse setup
     parser = argparse.ArgumentParser(
         description='This generates the index page for Incursion Watch V2',
     )
@@ -159,62 +187,28 @@ if __name__ == '__main__':
         default=None
     )
     opts = parser.parse_args()
+    # Argparse setup
 
-    # FIXME: Goodness. This is really terrible.
     if opts.file:
-        print('loading from file...')
-        with open(opts.file, 'rb') as F:
-            incs = bson.loads(F.read())
+        print(f'Opening file {opts.file} to retrieve incursion data...')
+        incs = get_incursions(opts.file)
 
-        pp.pprint(incs)
-        print('generating index page...')
-        with open(f'index.html', 'w') as F:
-            F.write(
-                template.render(
-                    hs=incs['hs'],
-                    ls=incs['ls'],
-                    ns=incs['ns']
-                )
-            )
-        print('index.html is now available!')
     else:
         print('No file specified, pinging the API for the updated data...')
-        incs = get_incursions()
+        incs = get_incursions(None)
 
-        if not incs:
-            print('Incursion data not available? Try again later.')
-        else:
-            hs = [
-                x for x in incs
-                if x['staging_solar_system_id']['security_status'] >= 0.5
-            ]
-            ls = [
-                x for x in incs
-                if x['staging_solar_system_id']['security_status'] > 0
-                and x['staging_solar_system_id']['security_status'] < 0.5
-            ]
-            ns = [
-                x for x in incs
-                if x['staging_solar_system_id']['security_status'] <= 0
-            ]
-
-            with open(f'incursions-{int(time.time())}.json', 'wb') as F:
-                F.write(
-                    bson.dumps({
-                            'hs': hs,
-                            'ls': ls,
-                            'ns': ns,
-                        }
-                    )
-                )
-
-        with open(f'index.html', 'w') as F:
+        print('saving updated incursion data...')
+        with open(f'incursions-{int(time.time())}.bson', 'wb') as F:
             F.write(
-                template.render(
-                    hs=hs,
-                    ls=ls,
-                    ns=ns,
-                )
+                bson.dumps(incs)
             )
 
-            print('index.html is now available!')
+    print('Generating index.html file...')
+    with open(f'index.html', 'w') as F:
+        F.write(
+            template.render(
+                incursions=incs,
+            )
+        )
+
+        print('index.html is now available!')
