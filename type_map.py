@@ -6,9 +6,16 @@
 TYPEMAP = {
     'okkamon': 'Assault',
     'vaaralen': 'Assault',
+    'vecodie': 'Assault',
+    'stoure': 'Staging',
+    'prism': 'Staging',
     'asakai': 'Vanguard',
     'mushikegi': 'Vanguard',
     'elunala': 'Vanguard',
     'ikoskio': 'Vanguard',
+    'arasare': 'Vanguard',
+    'yvelet': 'Vanguard',
+    'lazer': 'Vanguard',
     'teskanen': 'Headquarters',
+    'yvaeroure': 'Headquarters',
 }

@@ -26,19 +26,184 @@
     </head>
     <body>
         <div class="container">
-            <h1 class="text-center">Incursion Watch V2</h1>
             
-                
+    <h1 class="text-center mb-1">Incursion Watch V2</h1>
+    <hr class="my-4">
+    
+        
+    
+    <div class="row my-2">
+        <div class="col-lg-6">
+            <!-- <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th>Constellation</th>
+                        <th>Region</th>
+                        <th>Staging</th>
+                        <th>Influence</th>
+                        <th>State</th>
+                        <th>Boss?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Goins</td>
+                        <td>Solitude</td>
+                        <td>Stoure</td>
+                        <td>
+                            <div class="progress">
+                                <div 
+                                    class="progress-bar progress-bar-striped progress-bar-animated"
+                                    role="progressbar"
+                                    style="width: {'raw': 76.0, 'readable': '76.0%'}"
+                                >
+                            </div>
+                        </td>
+                        <td>MOBILIZING</td>
+                        <td>True</td>
+                    </tr>
+                </tbody> 
+            </table> -->
+            <div class="card h-100 w-100">
+                <div class="card-body align-items-stretch">
+                    <div class="card-text">
+                        <ul class="list-group">
+                            <!-- Constellation Name and Region Name -->
+                            
+                            <div class="text-center alert alert-success">
+                            
+                                <a href="">
+                                    <h2>Goins</h3>
+                                </a>
+                                <a href="">
+                                    <h5>Solitude</h5>
+                                </a>
+                            </div>
+
+                            <!-- Mobilization status -->
+                            <div title="Is the incursion just starting, in progress, or coming to an end?">
+                                
+                                <div class="text-center alert alert-warning fade show" role='alert'>
+                                
+                                    MOBILIZING
+                                </div>
+                            </div>
+
+                            <!-- Influence percentage -->
+                            <div class="text-center" title="Lower influence means lower effect of penalties on infested systems">
+                                <p>Influence @ 76.0%</p>
+                                <div class="progress">
+                                    <div 
+                                        class="progress-bar text-center"
+                                        role="progressbar"
+                                        style="width: 76.0%"
+                                        aria-valuenow="76.0"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100"
+                                    >
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Staging System and its Sec status -->
+                            <div class="mt-3 alert" title="The system the incursion is staging out of">
+                                <p class="float-left"><b>Staging System</b></p>
+                                <p class="float-right">Stoure (0.7)</p>
+                            </div>
+
+                            <!-- Status of the Boss Site -->
+                            <div class="mt-3 alert" title="Is the boss site up?">
+                                <p class="float-left"><b>Boss site up?</b></p>
+                                <p class="float-right">True</p>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card h-100 w-100">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Security Status</th>
+                                <th scope="col">Incursion Site Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Vecodie</td>
+                                    
+                                    <td class='text-success'><b>0.8</b></td>
+                                    
+                                    <td>Assault</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Yvaeroure</td>
+                                    
+                                    <td class='text-success'><b>0.8</b></td>
+                                    
+                                    <td>Headquarters</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Stoure</td>
+                                    
+                                    <td class='text-success'><b>0.7</b></td>
+                                    
+                                    <td>Staging</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>Arasare</td>
+                                    
+                                    <td class='text-success'><b>0.8</b></td>
+                                    
+                                    <td>Vanguard</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>Yvelet</td>
+                                    
+                                    <td class='text-success'><b>0.8</b></td>
+                                    
+                                    <td>Vanguard</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>Lazer</td>
+                                    
+                                    <td class='text-success'><b>0.8</b></td>
+                                    
+                                    <td>Vanguard</td>
+                                </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
     
 
-            
-                
     
-    <div class="row">
+        
     
-        <div class="col-lg-6 text-warning">
-    
-            <table class="table text-center">
+    <div class="row my-2">
+        <div class="col-lg-6">
+            <!-- <table class="table text-center">
                 <thead>
                     <tr>
                         <th>Constellation</th>
@@ -59,204 +224,173 @@
                                 <div 
                                     class="progress-bar progress-bar-striped progress-bar-animated"
                                     role="progressbar"
-                                    style="width: 96.0%"
+                                    style="width: {'raw': 100.0, 'readable': '100.0%'}"
                                 >
                             </div>
                         </td>
-                        <td>established</td>
+                        <td>WITHDRAWING</td>
                         <td>True</td>
                     </tr>
-                </tbody>
-            </table>
+                </tbody> 
+            </table> -->
+            <div class="card h-100 w-100">
+                <div class="card-body align-items-stretch">
+                    <div class="card-text">
+                        <ul class="list-group">
+                            <!-- Constellation Name and Region Name -->
+                            
+                            <div class="text-center alert alert-warning">
+                            
+                                <a href="">
+                                    <h2>Kurala</h3>
+                                </a>
+                                <a href="">
+                                    <h5>Black Rise</h5>
+                                </a>
+                            </div>
+
+                            <!-- Mobilization status -->
+                            <div title="Is the incursion just starting, in progress, or coming to an end?">
+                                
+                                <div class="text-center alert alert-success fade show" role='alert'>
+                                
+                                    WITHDRAWING
+                                </div>
+                            </div>
+
+                            <!-- Influence percentage -->
+                            <div class="text-center" title="Lower influence means lower effect of penalties on infested systems">
+                                <p>Influence @ 100.0%</p>
+                                <div class="progress">
+                                    <div 
+                                        class="progress-bar text-center"
+                                        role="progressbar"
+                                        style="width: 100.0%"
+                                        aria-valuenow="100.0"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100"
+                                    >
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Staging System and its Sec status -->
+                            <div class="mt-3 alert" title="The system the incursion is staging out of">
+                                <p class="float-left"><b>Staging System</b></p>
+                                <p class="float-right">Prism (0.2)</p>
+                            </div>
+
+                            <!-- Status of the Boss Site -->
+                            <div class="mt-3 alert" title="Is the boss site up?">
+                                <p class="float-left"><b>Boss site up?</b></p>
+                                <p class="float-right">True</p>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-lg-6">
-            <table class="table text-center">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Security Status</th>
-                        <th>Incursion Site Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                     
-                        <tr>
-                            <td>Okkamon</td>
+            <div class="card h-100 w-100">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Security Status</th>
+                                <th scope="col">Incursion Site Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Okkamon</td>
+                                    
+                                    <td class='text-warning'><b>0.3</b></td>
+                                    
+                                    <td>Assault</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Vaaralen</td>
+                                    
+                                    <td class='text-warning'><b>0.3</b></td>
+                                    
+                                    <td>Assault</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Teskanen</td>
+                                    
+                                    <td class='text-warning'><b>0.3</b></td>
+                                    
+                                    <td>Headquarters</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>Prism</td>
+                                    
+                                    <td class='text-warning'><b>0.2</b></td>
+                                    
+                                    <td>Staging</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>Asakai</td>
+                                    
+                                    <td class='text-warning'><b>0.3</b></td>
+                                    
+                                    <td>Vanguard</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>Mushikegi</td>
+                                    
+                                    <td class='text-warning'><b>0.4</b></td>
+                                    
+                                    <td>Vanguard</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td>Elunala</td>
+                                    
+                                    <td class='text-warning'><b>0.3</b></td>
+                                    
+                                    <td>Vanguard</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>Ikoskio</td>
+                                    
+                                    <td class='text-warning'><b>0.3</b></td>
+                                    
+                                    <td>Vanguard</td>
+                                </tr>
                             
-                                <td class='text-warning'><b>0.3</b></td>
-                            
-                            <td>Assault</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>Vaaralen</td>
-                            
-                                <td class='text-warning'><b>0.3</b></td>
-                            
-                            <td>Assault</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>Asakai</td>
-                            
-                                <td class='text-warning'><b>0.3</b></td>
-                            
-                            <td>Vanguard</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>Prism</td>
-                            
-                                <td class='text-warning'><b>0.2</b></td>
-                            
-                            <td>Unknown</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>Mushikegi</td>
-                            
-                                <td class='text-warning'><b>0.4</b></td>
-                            
-                            <td>Vanguard</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>Teskanen</td>
-                            
-                                <td class='text-warning'><b>0.3</b></td>
-                            
-                            <td>Headquarters</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>Elunala</td>
-                            
-                                <td class='text-warning'><b>0.3</b></td>
-                            
-                            <td>Vanguard</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>Ikoskio</td>
-                            
-                                <td class='text-warning'><b>0.3</b></td>
-                            
-                            <td>Vanguard</td>
-                        </tr>
-                    
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
     
 
-            
-                
     
-    <div class="row">
+        
     
-        <div class="col-lg-6 text-danger">
-    
-            <table class="table text-center">
-                <thead>
-                    <tr>
-                        <th>Constellation</th>
-                        <th>Region</th>
-                        <th>Staging</th>
-                        <th>Influence</th>
-                        <th>State</th>
-                        <th>Boss?</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>4-QV2L</td>
-                        <td>Wicked Creek</td>
-                        <td>XEN7-0</td>
-                        <td>
-                            <div class="progress">
-                                <div 
-                                    class="progress-bar progress-bar-striped progress-bar-animated"
-                                    role="progressbar"
-                                    style="width: 0.0%"
-                                >
-                            </div>
-                        </td>
-                        <td>established</td>
-                        <td>False</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="row my-2">
         <div class="col-lg-6">
-            <table class="table text-center">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Security Status</th>
-                        <th>Incursion Site Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                     
-                        <tr>
-                            <td>LKZ-CY</td>
-                            
-                                <td class='text-danger'><b>-0.4</b></td>
-                            
-                            <td>Unknown</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>F5M-CC</td>
-                            
-                                <td class='text-danger'><b>-0.4</b></td>
-                            
-                            <td>Unknown</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>TZE-UB</td>
-                            
-                                <td class='text-danger'><b>-0.3</b></td>
-                            
-                            <td>Unknown</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>WRL4-2</td>
-                            
-                                <td class='text-danger'><b>-0.4</b></td>
-                            
-                            <td>Unknown</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>V7G-RL</td>
-                            
-                                <td class='text-danger'><b>-0.4</b></td>
-                            
-                            <td>Unknown</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>XEN7-0</td>
-                            
-                                <td class='text-danger'><b>-0.2</b></td>
-                            
-                            <td>Unknown</td>
-                        </tr>
-                    
-                </tbody>
-            </table>
-        </div>
-    </div>
-    
-    <div class="row">
-    
-        <div class="col-lg-6 text-danger">
-    
-            <table class="table text-center">
+            <!-- <table class="table text-center">
                 <thead>
                     <tr>
                         <th>Constellation</th>
@@ -277,98 +411,343 @@
                                 <div 
                                     class="progress-bar progress-bar-striped progress-bar-animated"
                                     role="progressbar"
-                                    style="width: 16.0%"
+                                    style="width: {'raw': 89.0, 'readable': '89.0%'}"
                                 >
                             </div>
                         </td>
-                        <td>established</td>
-                        <td>False</td>
+                        <td>MOBILIZING</td>
+                        <td>True</td>
                     </tr>
-                </tbody>
-            </table>
+                </tbody> 
+            </table> -->
+            <div class="card h-100 w-100">
+                <div class="card-body align-items-stretch">
+                    <div class="card-text">
+                        <ul class="list-group">
+                            <!-- Constellation Name and Region Name -->
+                            
+                            <div class="text-center alert alert-danger">
+                            
+                                <a href="">
+                                    <h2>ZQ7-QS</h3>
+                                </a>
+                                <a href="">
+                                    <h5>Tenerifis</h5>
+                                </a>
+                            </div>
+
+                            <!-- Mobilization status -->
+                            <div title="Is the incursion just starting, in progress, or coming to an end?">
+                                
+                                <div class="text-center alert alert-warning fade show" role='alert'>
+                                
+                                    MOBILIZING
+                                </div>
+                            </div>
+
+                            <!-- Influence percentage -->
+                            <div class="text-center" title="Lower influence means lower effect of penalties on infested systems">
+                                <p>Influence @ 89.0%</p>
+                                <div class="progress">
+                                    <div 
+                                        class="progress-bar text-center"
+                                        role="progressbar"
+                                        style="width: 89.0%"
+                                        aria-valuenow="89.0"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100"
+                                    >
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Staging System and its Sec status -->
+                            <div class="mt-3 alert" title="The system the incursion is staging out of">
+                                <p class="float-left"><b>Staging System</b></p>
+                                <p class="float-right">YF-P4X (-0.2)</p>
+                            </div>
+
+                            <!-- Status of the Boss Site -->
+                            <div class="mt-3 alert" title="Is the boss site up?">
+                                <p class="float-left"><b>Boss site up?</b></p>
+                                <p class="float-right">True</p>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-lg-6">
-            <table class="table text-center">
+            <div class="card h-100 w-100">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Security Status</th>
+                                <th scope="col">Incursion Site Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>IL-YTR</td>
+                                    
+                                    <td class='text-danger'><b>-0.6</b></td>
+                                    
+                                    <td>Unknown</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>KW-OAM</td>
+                                    
+                                    <td class='text-danger'><b>-0.6</b></td>
+                                    
+                                    <td>Unknown</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>U2U5-A</td>
+                                    
+                                    <td class='text-danger'><b>-0.4</b></td>
+                                    
+                                    <td>Unknown</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>EQWO-Y</td>
+                                    
+                                    <td class='text-danger'><b>-0.4</b></td>
+                                    
+                                    <td>Unknown</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>JK-Q77</td>
+                                    
+                                    <td class='text-danger'><b>-0.7</b></td>
+                                    
+                                    <td>Unknown</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>QI9-42</td>
+                                    
+                                    <td class='text-danger'><b>-0.3</b></td>
+                                    
+                                    <td>Unknown</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td>YF-P4X</td>
+                                    
+                                    <td class='text-danger'><b>-0.2</b></td>
+                                    
+                                    <td>Unknown</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>ABE-M2</td>
+                                    
+                                    <td class='text-danger'><b>-0.4</b></td>
+                                    
+                                    <td>Unknown</td>
+                                </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row my-2">
+        <div class="col-lg-6">
+            <!-- <table class="table text-center">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Security Status</th>
-                        <th>Incursion Site Type</th>
+                        <th>Constellation</th>
+                        <th>Region</th>
+                        <th>Staging</th>
+                        <th>Influence</th>
+                        <th>State</th>
+                        <th>Boss?</th>
                     </tr>
                 </thead>
                 <tbody>
-                     
-                        <tr>
-                            <td>IL-YTR</td>
+                    <tr>
+                        <td>GJH-1C</td>
+                        <td>Detorid</td>
+                        <td>OEG-K9</td>
+                        <td>
+                            <div class="progress">
+                                <div 
+                                    class="progress-bar progress-bar-striped progress-bar-animated"
+                                    role="progressbar"
+                                    style="width: {'raw': 0.0, 'readable': '0.0%'}"
+                                >
+                            </div>
+                        </td>
+                        <td>MOBILIZING</td>
+                        <td>False</td>
+                    </tr>
+                </tbody> 
+            </table> -->
+            <div class="card h-100 w-100">
+                <div class="card-body align-items-stretch">
+                    <div class="card-text">
+                        <ul class="list-group">
+                            <!-- Constellation Name and Region Name -->
                             
-                                <td class='text-danger'><b>-0.6</b></td>
+                            <div class="text-center alert alert-danger">
                             
-                            <td>Unknown</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>KW-OAM</td>
+                                <a href="">
+                                    <h2>GJH-1C</h3>
+                                </a>
+                                <a href="">
+                                    <h5>Detorid</h5>
+                                </a>
+                            </div>
+
+                            <!-- Mobilization status -->
+                            <div title="Is the incursion just starting, in progress, or coming to an end?">
+                                
+                                <div class="text-center alert alert-warning fade show" role='alert'>
+                                
+                                    MOBILIZING
+                                </div>
+                            </div>
+
+                            <!-- Influence percentage -->
+                            <div class="text-center" title="Lower influence means lower effect of penalties on infested systems">
+                                <p>Influence @ 0.0%</p>
+                                <div class="progress">
+                                    <div 
+                                        class="progress-bar text-center"
+                                        role="progressbar"
+                                        style="width: 0.0%"
+                                        aria-valuenow="0.0"
+                                        aria-valuemin="0"
+                                        aria-valuemax="100"
+                                    >
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Staging System and its Sec status -->
+                            <div class="mt-3 alert" title="The system the incursion is staging out of">
+                                <p class="float-left"><b>Staging System</b></p>
+                                <p class="float-right">OEG-K9 (-0.8)</p>
+                            </div>
+
+                            <!-- Status of the Boss Site -->
+                            <div class="mt-3 alert" title="Is the boss site up?">
+                                <p class="float-left"><b>Boss site up?</b></p>
+                                <p class="float-right">False</p>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card h-100 w-100">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Security Status</th>
+                                <th scope="col">Incursion Site Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>WU-FHQ</td>
+                                    
+                                    <td class='text-danger'><b>-0.3</b></td>
+                                    
+                                    <td>Unknown</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>V-4DBR</td>
+                                    
+                                    <td class='text-danger'><b>-0.3</b></td>
+                                    
+                                    <td>Unknown</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>B-5UFY</td>
+                                    
+                                    <td class='text-danger'><b>-0.4</b></td>
+                                    
+                                    <td>Unknown</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>SK42-F</td>
+                                    
+                                    <td class='text-danger'><b>-0.3</b></td>
+                                    
+                                    <td>Unknown</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>EU9-J3</td>
+                                    
+                                    <td class='text-danger'><b>-0.3</b></td>
+                                    
+                                    <td>Unknown</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>PQRE-W</td>
+                                    
+                                    <td class='text-danger'><b>-0.6</b></td>
+                                    
+                                    <td>Unknown</td>
+                                </tr>
+                             
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td>OEG-K9</td>
+                                    
+                                    <td class='text-danger'><b>-0.8</b></td>
+                                    
+                                    <td>Unknown</td>
+                                </tr>
                             
-                                <td class='text-danger'><b>-0.6</b></td>
-                            
-                            <td>Unknown</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>U2U5-A</td>
-                            
-                                <td class='text-danger'><b>-0.4</b></td>
-                            
-                            <td>Unknown</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>EQWO-Y</td>
-                            
-                                <td class='text-danger'><b>-0.4</b></td>
-                            
-                            <td>Unknown</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>JK-Q77</td>
-                            
-                                <td class='text-danger'><b>-0.7</b></td>
-                            
-                            <td>Unknown</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>QI9-42</td>
-                            
-                                <td class='text-danger'><b>-0.3</b></td>
-                            
-                            <td>Unknown</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>YF-P4X</td>
-                            
-                                <td class='text-danger'><b>-0.2</b></td>
-                            
-                            <td>Unknown</td>
-                        </tr>
-                     
-                        <tr>
-                            <td>ABE-M2</td>
-                            
-                                <td class='text-danger'><b>-0.4</b></td>
-                            
-                            <td>Unknown</td>
-                        </tr>
-                    
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
     
 
-            
+    
+
         </div>
     </body>
 </html>
