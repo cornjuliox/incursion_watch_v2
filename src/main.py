@@ -1,10 +1,11 @@
-import requests
 import pprint
 import time
 import json
+import os
 import argparse
 import aiohttp
 import asyncio
+from functools import partial
 
 import arrow
 from jinja2 import Environment, FileSystemLoader
@@ -17,7 +18,6 @@ pp = pprint.PrettyPrinter(indent=2)
 BASE_ENDPOINT = 'https://esi.evetech.net/latest'
 INCURSIONS = f'{BASE_ENDPOINT}/incursions'
 CONSTELLATIONS = f'{BASE_ENDPOINT}/universe/constellations'
-# NOTE: just pull the faction out of the response json.
 FACTIONS = f'{BASE_ENDPOINT}/universe/factions'
 SYSTEMS = f'{BASE_ENDPOINT}/universe/systems'
 REGIONS = f'{BASE_ENDPOINT}/universe/regions'
@@ -73,7 +73,8 @@ async def _hydrate_incursion(
 
     async def _get_solar_system(
         session: aiohttp.ClientSession,
-        system_id: int
+        system_id: int,
+        staging: bool = False
     ) -> dict:
         full_url = f'{SYSTEMS}/{system_id}'
         resp = await fetch(session, full_url)
@@ -81,7 +82,9 @@ async def _hydrate_incursion(
         new = {}
         new['name'] = resp.get('name')
         new['security_status'] = round(resp.get('security_status'), 1)
-        if new['name'].lower() in TYPEMAP.keys():
+        if staging:
+            new['type'] = 'Staging'
+        elif new['name'].lower() in TYPEMAP.keys():
             new['type'] = TYPEMAP[new['name'].lower()]
         else:
             new['type'] = 'Unknown'
@@ -100,7 +103,7 @@ async def _hydrate_incursion(
         new_list = sorted(hydrated_list, key=lambda x: (x['type']))
         return new_list
 
-    async def _get_faction(session: aiohttp.ClientSession, faction_id: int) -> dict:
+    async def _get_faction(session: aiohttp.ClientSession, faction_id: int) -> dict:  # noqa: E501
         full_url = f'{FACTIONS}'
         resp = await fetch(session, full_url)
 
@@ -118,17 +121,21 @@ async def _hydrate_incursion(
         # while preserving the command pattern I've got going here.
         return arrow.now().timestamp
 
+    _get_staging_system = partial(_get_solar_system, staging=True)
+
+    # NOTE: We need another one because the first one was a mix of std. async
+    #       and sync functions. passing incursion dicts
+    #       wholesale into a dict comprehension
+    #       like I was doing will only result in things failing because you
+    #       have stuff like straight 'bool' in the the source dict, but can't
+    #       use await with anything other than callables.
     COMMAND_MAP = {
         'constellation_id': lambda x: _get_constellation(session, x),
         'faction_id': lambda x: _get_faction(session, x),
-        'staging_solar_system_id': lambda x: _get_solar_system(session, x),
-        'infested_solar_systems': lambda x: _get_infested_solar_systems(session, x),
+        'staging_solar_system_id': lambda x: _get_staging_system(session, x),
+        'infested_solar_systems': lambda x: _get_infested_solar_systems(session, x),  # noqa: E501
     }
 
-    # NOTE: We need another one because the first one was a mix of std. async
-    #       and sync functions. passing it wholesale into a dict comprehension
-    #       like I was doing will only result inthe whole thing failing because
-    #       we cannot use things like 'bool' with await.
     SYNC_COMMAND_MAP = {
         'has_boss': lambda x: x,
         'influence': _handle_influence,
@@ -149,6 +156,10 @@ async def _hydrate_incursion(
         if k in SYNC_COMMAND_MAP.keys()
     })
 
+    for x in new_incursion['infested_solar_systems']:
+        if x['name'] == new_incursion['staging_solar_system_id']['name']:
+            x.update(new_incursion['staging_solar_system_id'])
+
     new_incursion.update({
         'created': _get_current_time()
     })
@@ -157,7 +168,6 @@ async def _hydrate_incursion(
 
 
 async def get_incursions(from_file=None):
-
     # standard incursion storage format v1:
     # {
     #   "hs": [{...}, {...}],
@@ -207,8 +217,12 @@ async def get_incursions(from_file=None):
 
 if __name__ == '__main__':
     # Jinja2 Setup
+    # NOTE: this combo of dirname() + join() is the more reliable way to do it
+    DIRNAME = os.path.dirname(__file__)
+    TEMPLATEPATH = os.path.join(DIRNAME, 'templates/')
+
     env = Environment(
-        loader=FileSystemLoader('./templates'),
+        loader=FileSystemLoader(TEMPLATEPATH),
     )
     template = env.get_template('_template.html')
     # /Jinja2 Setup
@@ -235,13 +249,13 @@ if __name__ == '__main__':
 
     if opts.file is None:
         print('saving updated incursion data...')
-        with open(f'incursions-{int(time.time())}.json', 'w') as F:
+        with open(f'../incursions-{int(time.time())}.json', 'w') as F:
             F.write(
                 json.dumps(incs, indent=2)
             )
 
     print('Generating index.html file...')
-    with open(f'index.html', 'w') as F:
+    with open(os.path.join(DIRNAME, os.path.join(os.pardir, 'index.html')), 'w') as F:
         F.write(
             template.render(
                 incursions=incs,

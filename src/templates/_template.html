@@ -2,7 +2,7 @@
 {% extends '_base.html' %}
 {% block content %}
     <h1 class="text-center mb-1">Incursion Watch V2</h1>
-    <hr class="my-4">
+    <hr class="my-3">
     {% for inc in incursions %}
         {{ incursionTable(incursions[inc]) }}
     {% endfor %}
