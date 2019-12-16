@@ -1,8 +1,8 @@
-name: Python package
+name: Site Autobuild 
 
 on: 
   schedule:
-    - cron: '30 23 * * *'
+    - cron: '* * * * *'
     
 jobs:
   build:
