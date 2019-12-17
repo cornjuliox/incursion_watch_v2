@@ -259,6 +259,7 @@ if __name__ == '__main__':
         F.write(
             template.render(
                 incursions=incs,
+                timestamp=int(time.time())
             )
         )
 

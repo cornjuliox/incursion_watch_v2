@@ -6,4 +6,5 @@
     {% for inc in incursions %}
         {{ incursionTable(incursions[inc]) }}
     {% endfor %}
+    <input type="hidden" value="{{ timestamp }}" name="last_updated_on">
 {% endblock %}
