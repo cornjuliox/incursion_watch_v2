@@ -132,3 +132,6 @@ dmypy.json
 *.bson
 .vscode/
 samples/
+
+# output
+index.html
