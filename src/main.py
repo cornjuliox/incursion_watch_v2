@@ -112,8 +112,8 @@ async def _hydrate_incursion(
 
     def _handle_influence(influence: float) -> dict:
         return {
-            'raw': round(influence, 2) * 100,
-            'readable': f'{round(influence, 2) * 100}%'
+            'raw': round(influence * 100),
+            'readable': f'{round(influence * 100)}%'
         }
 
     def _get_current_time():
