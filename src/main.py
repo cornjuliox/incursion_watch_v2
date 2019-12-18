@@ -255,6 +255,10 @@ if __name__ == '__main__':
             )
 
     print('Generating index.html file...')
+
+    print('Removing old index.html file...')
+    os.remove(os.path.join(DIRNAME, os.path.join(os.pardir, 'index.html')))
+
     with open(os.path.join(DIRNAME, os.path.join(os.pardir, 'index.html')), 'w') as F:
         F.write(
             template.render(

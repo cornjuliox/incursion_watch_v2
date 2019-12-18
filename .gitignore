@@ -133,5 +133,3 @@ dmypy.json
 .vscode/
 samples/
 
-# output
-index.html
