@@ -3,22 +3,52 @@
 # in the initial request.
 
 
-TYPEMAP = {
-    'okkamon': 'Assault',
-    'vaaralen': 'Assault',
-    'vecodie': 'Assault',
-    'ilahed': 'Assault',
-    'asakai': 'Vanguard',
-    'mushikegi': 'Vanguard',
-    'elunala': 'Vanguard',
-    'ikoskio': 'Vanguard',
-    'arasare': 'Vanguard',
-    'sosa': 'Vanguard',
-    'eshwil': 'Vanguard',
-    'aranir': 'Vanguard',
-    'yvelet': 'Vanguard',
-    'lazer': 'Vanguard',
-    'teskanen': 'Headquarters',
-    'yvaeroure': 'Headquarters',
-    'ishkad': 'Headquarters',
-}
+ASSAULT = [
+    'okkamon',
+    'vaaralen',
+    'vecodie',
+    'ilahed',
+    'esa',
+    'kari',
+]
+
+VANGUARD = [
+    'asakai',
+    'mushikegi',
+    'elunala',
+    'ikoskio',
+    'arasare',
+    'sosa',
+    'uhodoh',
+    'hath',
+    'judra',
+    'sharios',
+    'eshwil',
+    'aranir',
+    'yvelet',
+    'lazer',
+]
+
+HEADQUARTERS = [
+    'teskanen',
+    'yvaeroure',
+    'ishkad',
+    'arakor',
+]
+
+TYPEMAP = {}
+TYPEMAP.update({
+    x: 'Assault'
+    for x in ASSAULT
+
+})
+
+TYPEMAP.update({
+    x: 'Vanguard'
+    for x in VANGUARD
+})
+
+TYPEMAP.update({
+    x: 'Headquarters'
+    for x in HEADQUARTERS
+})
