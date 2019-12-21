@@ -123,12 +123,6 @@ async def _hydrate_incursion(
 
     _get_staging_system = partial(_get_solar_system, staging=True)
 
-    # NOTE: We need another one because the first one was a mix of std. async
-    #       and sync functions. passing incursion dicts
-    #       wholesale into a dict comprehension
-    #       like I was doing will only result in things failing because you
-    #       have stuff like straight 'bool' in the the source dict, but can't
-    #       use await with anything other than callables.
     COMMAND_MAP = {
         'constellation_id': lambda x: _get_constellation(session, x),
         'faction_id': lambda x: _get_faction(session, x),
@@ -136,6 +130,12 @@ async def _hydrate_incursion(
         'infested_solar_systems': lambda x: _get_infested_solar_systems(session, x),  # noqa: E501
     }
 
+    # NOTE: We need another one because the first one was a mix of std. async
+    #       and sync functions. passing incursion dicts
+    #       wholesale into a dict comprehension
+    #       like I was doing will only result in things failing because you
+    #       have stuff like straight 'bool' in the the source dict, but can't
+    #       use await with anything other than callables.
     SYNC_COMMAND_MAP = {
         'has_boss': lambda x: x,
         'influence': _handle_influence,
@@ -188,8 +188,11 @@ async def get_incursions(from_file=None):
         print('loading incursions from endpoint...')
 
         async with aiohttp.ClientSession() as session:
-            data = await fetch(session, INCURSIONS)
-            # data = requests.get(INCURSIONS).json()
+            try:
+                data = await fetch(session, INCURSIONS)
+                # data = requests.get(INCURSIONS).json()
+            except aiohttp.client_exceptions.ContentTypeError:
+                return data.text()
 
             incursions = [
                 await _hydrate_incursion(session, x)
