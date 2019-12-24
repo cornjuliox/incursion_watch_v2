@@ -100,7 +100,10 @@ async def _hydrate_incursion(
             system = await _get_solar_system(session, x)
             hydrated_list.append(system)
 
-        new_list = sorted(hydrated_list, key=lambda x: (x['type']))
+        new_list = sorted(
+            hydrated_list,
+            key=lambda x: (-x['security_status'], x['type'])
+        )
         return new_list
 
     async def _get_faction(session: aiohttp.ClientSession, faction_id: int) -> dict:  # noqa: E501
