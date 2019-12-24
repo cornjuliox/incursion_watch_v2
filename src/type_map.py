@@ -10,6 +10,9 @@ ASSAULT = [
     'ilahed',
     'esa',
     'kari',
+    'Nikh',
+    'Amphar',
+    'Usroh',
 ]
 
 VANGUARD = [
@@ -27,6 +30,12 @@ VANGUARD = [
     'aranir',
     'yvelet',
     'lazer',
+    'salashayama',
+    'janus',
+    'iosantin',
+    'orva',
+    'zet',
+    'thiarer',
 ]
 
 HEADQUARTERS = [
@@ -34,6 +43,7 @@ HEADQUARTERS = [
     'yvaeroure',
     'ishkad',
     'arakor',
+    'Agha',
 ]
 
 TYPEMAP = {}
