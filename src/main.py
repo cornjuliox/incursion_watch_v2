@@ -188,11 +188,8 @@ async def get_incursions(from_file=None):
         print('loading incursions from endpoint...')
 
         async with aiohttp.ClientSession() as session:
-            try:
-                data = await fetch(session, INCURSIONS)
-                # data = requests.get(INCURSIONS).json()
-            except aiohttp.client_exceptions.ContentTypeError:
-                return data.text()
+            data = await fetch(session, INCURSIONS)
+            # data = requests.get(INCURSIONS).json()
 
             incursions = [
                 await _hydrate_incursion(session, x)
@@ -228,6 +225,8 @@ if __name__ == '__main__':
         loader=FileSystemLoader(TEMPLATEPATH),
     )
     template = env.get_template('_template.html')
+
+    pp.pprint(template.generate())
     # /Jinja2 Setup
 
     # Argparse setup
@@ -259,10 +258,9 @@ if __name__ == '__main__':
 
     print('Generating index.html file...')
 
-    print('Removing old index.html file...')
-    os.remove(os.path.join(DIRNAME, os.path.join(os.pardir, 'index.html')))
-
-    with open(os.path.join(DIRNAME, os.path.join(os.pardir, 'index.html')), 'w') as F:
+    file_path = os.path.join(os.pardir, 'index.html')
+    full_path = os.path.join(DIRNAME, file_path)
+    with open(full_path, 'w') as F:
         F.write(
             template.render(
                 incursions=incs,
