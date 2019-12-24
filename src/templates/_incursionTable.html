@@ -83,7 +83,7 @@
                                         <!-- Text colored based on security status. -->
                                         {% if y.security_status > 0.5 %}
                                         <td class='text-success'><b>{{ y.security_status }}</b></td>
-                                        {% elif y.security_status < 0.5 and y.security_status > 0 %}
+                                        {% elif y.security_status <= 0.5 and y.security_status > 0 %}
                                         <td class='text-warning'><b>{{ y.security_status }}</b></td>
                                         {% elif y.security_status <= 0 %}
                                         <td class='text-danger'><b>{{ y.security_status }}</b></td>
