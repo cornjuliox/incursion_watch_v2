@@ -228,8 +228,6 @@ if __name__ == '__main__':
         loader=FileSystemLoader(TEMPLATEPATH),
     )
     template = env.get_template('_template.html')
-
-    pp.pprint(template.generate())
     # /Jinja2 Setup
 
     # Argparse setup
@@ -255,20 +253,14 @@ if __name__ == '__main__':
     if opts.file is None:
         print('saving updated incursion data...')
         with open(f'../incursions-{int(time.time())}.json', 'w') as F:
-            F.write(
-                json.dumps(incs, indent=2)
-            )
+            F.write(json.dumps(incs, indent=2))
 
     print('Generating index.html file...')
 
     file_path = os.path.join(os.pardir, 'index.html')
     full_path = os.path.join(DIRNAME, file_path)
     with open(full_path, 'w') as F:
-        F.write(
-            template.render(
-                incursions=incs,
-                timestamp=int(time.time())
-            )
-        )
+        new_data = template.render(incursions=incs, timestamp=int(time.time()))
+        F.write(new_data)
 
         print('index.html is now available!')
