@@ -13,6 +13,7 @@ ASSAULT = [
     'nikh',
     'amphar',
     'usroh',
+    'shapisin',
 ]
 
 VANGUARD = [
@@ -36,6 +37,9 @@ VANGUARD = [
     'orva',
     'zet',
     'thiarer',
+    'shalne',
+    'galnafsad',
+    'otakod',
 ]
 
 HEADQUARTERS = [
@@ -44,6 +48,7 @@ HEADQUARTERS = [
     'ishkad',
     'arakor',
     'agha',
+    'gonditsa',
 ]
 
 TYPEMAP = {}
