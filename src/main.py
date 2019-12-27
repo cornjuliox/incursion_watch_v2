@@ -42,7 +42,13 @@ REGIONS = f'{BASE_ENDPOINT}/universe/regions'
 
 async def fetch(session, url):
     async with session.get(url) as response:
-        return await response.json()
+        try:
+            return await response.json()
+        except Exception as e:
+            print('response.json() failed')
+            print(f'exception: {str(e)}')
+            print(f'response.text: {response.text()}')
+            return
 
 
 async def _hydrate_incursion(
